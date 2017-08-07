@@ -17,7 +17,7 @@ const cloneWithProps = function (Component, customProps) {
 
 export let One = StackNavigator({
   Breathing: { screen: cloneWithProps(Breathing, {nextScreen: 'Tension'}) },
-  Tension: { screen: Tension },
+  Tension: { screen: cloneWithProps(Tension, {nextScreen: 'Listening'}) },
   Listening: { screen: Listening },
   Looking: { screen: cloneWithProps(Looking, {nextScreen: 'Conclude'}) },
   Conclude: { screen: Conclude },

@@ -24,7 +24,7 @@ export default class Marquee extends React.Component {
 
   handlePageChange = (index) => {
     if ((index === this.props.children.length - 1) && this.props.onRepeat ) {
-      setTimeout(this.props.onRepeat, 10)
+      setTimeout(this.props.onRepeat, 2000)
     }
   }
 
@@ -35,7 +35,7 @@ export default class Marquee extends React.Component {
 
     return (
       <Carousel
-        delay={1000}
+        delay={4000}
         autoplay
         style={styles.carousel}
         onAnimateNextPage={this.handlePageChange}

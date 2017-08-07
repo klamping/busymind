@@ -37,7 +37,7 @@ export class Breathing extends Component {
   handlePressOut = () => {
     let numBreaths = this.state.breaths;
 
-    if(numBreaths < 1) {
+    if(numBreaths < 3) {
       this.setState({breaths: numBreaths + 1});
     } else {
       this.props.navigation.navigate(this.props.nextScreen);
