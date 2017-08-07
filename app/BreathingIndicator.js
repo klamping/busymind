@@ -28,6 +28,7 @@ export default class BreathingIndicator extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      opacity: 0.95,
       r: new Animated.Value(this.props.r)
     };
 
@@ -60,6 +61,8 @@ export default class BreathingIndicator extends Component {
       this.props.onPressIn(e);
     }
 
+    this.setState({opacity: 1}),
+
     Animated.timing(this.state.r, { toValue: this.props.r * 2, easing: Easing.easeIn, duration: 4000 }).start();
     return true;
   }
@@ -68,6 +71,8 @@ export default class BreathingIndicator extends Component {
     if (this.props.onPressOut) {
       this.props.onPressOut(e);
     }
+
+    this.setState({opacity: .95});
 
     Animated.timing(this.state.r, { toValue: this.props.r, easing: Easing.easeOutBack, duration: 4000 }).start(event => {
       if (event.finished) {
@@ -85,12 +90,15 @@ export default class BreathingIndicator extends Component {
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
       >
-        <Svg width={svgSize} height={svgSize}>
+        <Svg
+          width={svgSize} height={svgSize}
+          opacity={this.state.opacity}
+        >
           <Defs>
               <RadialGradient id="grad" x1="0" y1="0" x2="0" y2="0">
                   <Stop offset="0.1" stopColor="#203562" stopOpacity="1" />
                   <Stop offset="0.4" stopColor="#3E588F" stopOpacity="1" />
-                  <Stop offset="0.6" stopColor="#3E588F" stopOpacity=".8" />
+                  <Stop offset="0.6" stopColor="#3E588F" stopOpacity=".85" />
                   <Stop offset="1" stopColor="#E3E8F8" stopOpacity=".05" />
               </RadialGradient>
           </Defs>
@@ -106,8 +114,6 @@ export default class BreathingIndicator extends Component {
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

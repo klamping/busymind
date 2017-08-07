@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import {
   TouchableHighlight,
+  TouchableOpacity,
   Text,
   View,
   StyleSheet,
@@ -90,7 +91,8 @@ export class Reading extends Component {
           </Marquee>
         </View>
 
-        <View style={{height: 50 }}>{this.state.showContinue && <Continue onPress={() => navigate(this.props.nextScreen)} />}</View>
+
+        <View><Continue onPress={() => navigate(this.props.nextScreen)} isActive={this.state.showContinue} /></View>
       </Step>
     );
   }
@@ -235,15 +237,14 @@ export class Conclude extends Component {
         navigation={this.props.navigation}
         showRestart={false}>
         <View style={styles.marquee}>
-          <Text style={styles.concludeText}>You are here, alive and breathing.</Text>
-          <Text style={styles.concludeText}>When ready, return to your day in your own time.</Text>
+          <Text style={styles.endingText}>You are here, alive and breathing.</Text>
+          <Text style={styles.endingText}>When ready, return to your day in your own time.</Text>
         </View>
 
-        <View style={{height: 50 }}>
-          <Continue
-            text="Conclude the Session"
-            onPress={this.reset}
-          />
+        <View>
+          <TouchableOpacity onPress={this.reset} activeOpacity={0.7} style={styles.conclude}>
+            <Text style={styles.concludeText}>Conclude the Session</Text>
+          </TouchableOpacity>
         </View>
       </Step>
     );
@@ -251,13 +252,24 @@ export class Conclude extends Component {
 }
 const styles = StyleSheet.create({
   marquee: {
-    height: 200,
+    flex: 1,
     justifyContent: 'center',
-    marginHorizontal: 20
+    paddingHorizontal: 20
+  },
+  endingText: {
+    fontSize: 22,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    color: '#203562',
+    textAlign: 'center'
+  },
+  conclude: {
+    backgroundColor: '#203562',
+    padding: 20,
   },
   concludeText: {
-    fontSize: 22,
-    color: '#203562',
+    fontSize: 20,
+    color: '#F2F7FF',
     textAlign: 'center'
   }
 });

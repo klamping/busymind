@@ -33,7 +33,7 @@ export default class RestartButton extends React.Component {
       <View style={styles.button}>
         <TouchableHighlight onPress={this.reset} underlayColor="white">
           <View>
-            <Text style={styles.buttonText}>Restart</Text>
+            <Text style={styles.buttonText}>Home</Text>
           </View>
         </TouchableHighlight>
       </View>

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
-  View
+  View,
+  Dimensions,
 } from 'react-native';
 
 import RestartButton from './RestartButton';
@@ -28,12 +29,15 @@ export default class Step extends Component {
   }
 }
 
+let dimensions = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    height: dimensions.height,
+    width: dimensions.width,
     flexDirection: 'column',
-    backgroundColor: '#E3E8F8',
-    paddingBottom: 10
+    justifyContent: 'space-between',
+    backgroundColor: '#E3E8F8'
   },
 });

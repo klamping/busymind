@@ -11,7 +11,8 @@ import {
 export default class RestartButton extends React.Component {
   static propTypes = {
     text: React.PropTypes.string,
-    onPress: React.PropTypes.func
+    onPress: React.PropTypes.func,
+    isActive: React.PropTypes.bool,
   };
 
   static defaultProps = {
@@ -26,23 +27,25 @@ export default class RestartButton extends React.Component {
     }
   }
 
-  componentDidMount = () => {
-    Animated.timing(                  // Animate over time
-      this.state.fadeAnim,            // The animated value to drive
-      {
-        toValue: 1,                   // Animate to opacity: 1 (opaque)
-        duration: 1000,              // Make it take a while
-      }
-    ).start();
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isActive) {
+      Animated.timing(this.state.fadeAnim, { toValue: 1, duration: 500}).start();
+    }
+  }
+
+  onPress = (e) => {
+    if (this.props.isActive) {
+      this.props.onPress(e)
+    }
   }
 
   render() {
     return (
-      <Animated.View style={{opacity: this.state.fadeAnim}}>
+      <Animated.View style={[styles.view, {opacity: this.state.fadeAnim}]}>
         <TouchableHighlight
-          onPress={this.props.onPress}
+          onPress={this.onPress}
           style={styles.container}
-          underlayColor="#F2F7FF"
+          underlayColor="#203562"
           >
           <Text style={styles.text}>{this.props.text}</Text>
         </TouchableHighlight>
@@ -53,12 +56,12 @@ export default class RestartButton extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'flex-end'
+    backgroundColor: '#3E588F',
+    padding: 20,
   },
   text: {
-    paddingVertical: 15,
-    padding: 30,
-    color: '#3E588F',
-    fontSize: 20
+    textAlign: 'right',
+    color: '#F2F7FF',
+    fontSize: 20,
   }
 });

@@ -24,7 +24,7 @@ export default class Marquee extends React.Component {
 
   handlePageChange = (index) => {
     if ((index === this.props.children.length - 1) && this.props.onRepeat ) {
-      setTimeout(this.props.onRepeat, 2000)
+      setTimeout(this.props.onRepeat, 200)
     }
   }
 
@@ -37,6 +37,9 @@ export default class Marquee extends React.Component {
       <Carousel
         delay={4000}
         autoplay
+        bullets
+        bulletStyle={styles.bullet}
+        chosenBulletStyle={styles.chosenBullet}
         style={styles.carousel}
         onAnimateNextPage={this.handlePageChange}
       >
@@ -48,16 +51,10 @@ export default class Marquee extends React.Component {
 
 const styles = StyleSheet.create({
   carousel: {
-    flex: 1,
-    width: 300,
-    flexDirection: 'column',
-    backgroundColor: 'transparent',
-    alignSelf: 'center'
+    minHeight: 250
   },
   words: {
     flex: 1,
-    width: '100%',
-    alignItems: 'center',
     justifyContent: 'center'
   },
   word: {

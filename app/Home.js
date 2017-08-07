@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  TouchableOpacity
 } from 'react-native';
 
 import BreathingIndicator from './BreathingIndicator';
@@ -22,12 +22,12 @@ export default class HomeScreen extends Component {
         </View>
 
         <View style={styles.startButtons}>
-          <Continue
-            onPress={() => navigate('One')}
-            text="Start 1-minute session" />
-          <Continue
-            onPress={() => navigate('Five')}
-            text="Start 5-minute session" />
+          <TouchableOpacity onPress={() => navigate('One')} activeOpacity={0.5}>
+            <Text style={styles.startButton}>Start 1-minute session</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate('Five')} activeOpacity={0.5}>
+            <Text style={styles.startButton}>Start 5-minute session</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.breathingContainer}>
           <BreathingIndicator />
@@ -71,5 +71,14 @@ const styles = StyleSheet.create({
   },
   tagline: {
     fontSize: 18
+  },
+  startButtons: {
+    marginBottom: 20,
+  },
+  startButton: {
+    color: '#203562',
+    fontSize: 21,
+    padding: 10,
+    marginVertical: 5,
   }
 });
