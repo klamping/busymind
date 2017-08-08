@@ -51,7 +51,7 @@ export default class Marquee extends React.Component {
 
 const styles = StyleSheet.create({
   carousel: {
-    minHeight: 250
+    minHeight: 200
   },
   words: {
     flex: 1,

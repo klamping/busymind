@@ -58,9 +58,10 @@ export class Breathing extends Component {
           </Marquee>
         </View>
 
-        <BreathingIndicator
-          style={styles.indicator}
-          onPressOut={this.handlePressOut} />
+        <View style={styles.indicator}>
+          <BreathingIndicator
+            onPressOut={this.handlePressOut} />
+        </View>
       </Step>
     );
   }
@@ -236,7 +237,7 @@ export class Conclude extends Component {
       <Step
         navigation={this.props.navigation}
         showRestart={false}>
-        <View style={styles.marquee}>
+        <View style={styles.ending}>
           <Text style={styles.endingText}>You are here, alive and breathing.</Text>
           <Text style={styles.endingText}>When ready, return to your day in your own time.</Text>
         </View>
@@ -252,6 +253,17 @@ export class Conclude extends Component {
 }
 const styles = StyleSheet.create({
   marquee: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    marginTop: 60,
+    paddingHorizontal: 20
+  },
+  indicator: {
+    flex: 2,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  ending: {
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 20

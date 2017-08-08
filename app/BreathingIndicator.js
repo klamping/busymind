@@ -115,12 +115,4 @@ export default class BreathingIndicator extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFFFFF"
-  }
-});
-
-
 AppRegistry.registerComponent('BreathingIndicator', () => BreathingIndicator);

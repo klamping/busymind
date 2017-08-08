@@ -16,4 +16,4 @@ const App = StackNavigator({
   initialRouteName: 'Home',
 });
 
-AppRegistry.registerComponent('BusyMindTwoDotOh', () => App);
+AppRegistry.registerComponent('BusyMind', () => App);
