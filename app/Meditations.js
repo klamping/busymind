@@ -48,7 +48,7 @@ export class Breathing extends Component {
   render() {
     return (
       <Step navigation={this.props.navigation}>
-        <View style={styles.marquee}>
+        <View style={[styles.marquee, {marginTop:0}]}>
           <Marquee>
             <Text>Focus on your breathing.</Text>
             <Text>Hold the blue orb while you breath in.</Text>
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
   marquee: {
     flex: 1,
     justifyContent: 'flex-start',
-    marginTop: 60,
+    marginTop: 30,
     paddingHorizontal: 20
   },
   indicator: {
